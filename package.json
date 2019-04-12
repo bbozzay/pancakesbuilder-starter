@@ -1,0 +1,15 @@
+{
+  "name": "pancakes",
+  "private": true,
+  "scripts": {
+    "build": "hugo",
+    "build:preview": "hugo --buildFuture",
+    "start": "hugo server",
+    "server": "hugo server",
+    "server:with-drafts": "hugo server --buildFuture"
+  },
+  "dependencies": {
+    "autoprefixer": "^9.5.0",
+    "postcss-cli": "^6.1.2"
+  }
+}
