@@ -1,18 +1,20 @@
 baseURL = "/"
 languageCode = "en-gb"
-title = "DEV Pancakes Builder"
+title = "Pancakes Builder"
 theme = ["pancakes-builder", "pancakes-starter"]
 
 enableRobotsTXT = true
 disableAliases = true # overrides Hugo aliases with netlify aliases. Set false if not using netlify.
-ignoreFiles = []
+ignoreFiles = [ "docs.*" ]
 
 [permalinks]
   pages = "/:section/:title/"
+  blog = "/:title/"
+  work = "/:sections/:slug/"
 
 [params]
-disallow_search_engines = true # set robots.txt to disallow everything
-debug_enabled = false # disable drag and drop editor
+disallow_search_engines = false # set robots.txt to disallow everything
+debug_enabled = false #disable drag and drop editor
 # add redirects/headers
 [outputs]
 home = ["HTML", "RSS", "REDIRECTS", "HEADERS"]
@@ -35,4 +37,3 @@ mediatype = "text/netlify"
 baseName = "_headers"
 isPlainText = true
 notAlternative = true
-
