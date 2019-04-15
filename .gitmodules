@@ -1,3 +1,3 @@
-[submodule "themes/pancakes-builder"]
-	path = themes/pancakes-builder
-	url = https://github.com/fsdigitalllc/pancakes-builder.git
+[submodule "themes/pancakesBuilder"]
+	path = themes/pancakesBuilder
+	url = https://github.com/pancakes-builder/pancakesBuilder.git
