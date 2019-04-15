@@ -1,7 +1,7 @@
 baseURL = "/"
 languageCode = "en-gb"
 title = "Pancakes Builder"
-theme = ["pancakes-builder", "pancakes-starter"]
+theme = ["pancakesBuilder", "pancakes-starter"]
 
 enableRobotsTXT = true
 disableAliases = true # overrides Hugo aliases with netlify aliases. Set false if not using netlify.
