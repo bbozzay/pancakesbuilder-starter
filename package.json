@@ -9,7 +9,7 @@
     "server:with-drafts": "hugo server --buildFuture"
   },
   "dependencies": {
-    "autoprefixer": "^9.5.0",
+    "autoprefixer": "^9.5.1",
     "postcss-cli": "^6.1.2"
   }
 }
