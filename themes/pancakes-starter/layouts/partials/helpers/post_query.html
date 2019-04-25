@@ -1,0 +1,39 @@
+{{ $count := "3" }}
+{{ $select := false }}
+{{ $section := false }}
+{{ $paginate := true }}
+{{ .Scratch.Set "pageQuery" "" }}
+
+{{ with .Params.query }}
+  {{ with .count }}
+    {{ $count = . }}
+    
+  {{ end }}
+  {{ with .select }}
+    {{ $select = . }}
+    {{ range $select }}
+      {{ $pages := $.Site.GetPage . }}
+      {{ $pages = print $pages.File.UniqueID " " }}
+        {{ $.Scratch.Add "pageQuery" $pages }}
+    {{ end }}
+  {{ end }}
+
+  {{ with .section }}
+    {{ $section = . }}
+  {{ end }}
+{{ end }}
+
+{{ $query := (.Paginator $count).Pages }}
+{{ $select = .Scratch.Get "pageQuery" }}
+{{ $count }}
+{{ with $select }}
+  {{ $query = $.Site.RegularPages }}
+  {{ $query = first $count (where $query "File.UniqueID" "in" $select) }}
+{{ end }}
+
+{{ with $section }}
+  {{ $query = $.Site.RegularPages }}
+  {{ $query = where $query "Section" $section }}
+{{ end }}
+{{ $query = where $.Site.RegularPages "Section" "HugoGuides" }}
+{{ return $query }}

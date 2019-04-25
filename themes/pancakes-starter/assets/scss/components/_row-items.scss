@@ -1,0 +1,17 @@
+.ajaxItem.row {
+  margin-bottom: 25px;
+}
+.ajaxItem.row {
+  a {
+    display: block;
+    text-decoration: none;
+    display: grid;
+    grid-template-columns: .5fr 1fr;
+    grid-column-gap: 40px;
+    align-items: center;
+  }
+  img {
+    margin: 0 auto;
+    display: block;
+  }
+}

@@ -1,0 +1,5 @@
+{{ $s := resources.Get "js/util.js" }}
+{{ $n := resources.Get "js/global/masthead.js" }}
+
+{{ $scripts := slice $s $n | resources.Concat "app.js" | minify }}
+<script src="{{ $scripts.Permalink }}"></script>

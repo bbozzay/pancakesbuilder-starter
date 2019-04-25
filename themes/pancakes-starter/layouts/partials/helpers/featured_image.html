@@ -1,0 +1,16 @@
+{{ $image := false }}
+
+{{ with .src }}
+{{ if (fileExists .) }}
+{{ $imageResource := ($.page.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" . ) }}
+{{ $size := $imageResource.Resize "250x q100" }}
+
+{{ with $.size }}
+  {{ $size = print . " q100" }}
+  {{ $size = $imageResource.Resize $size }}
+{{ end }}
+
+{{ $image =  $size }}
+{{ return $image }}
+{{ end }}
+{{ end }}

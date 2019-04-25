@@ -1,0 +1,119 @@
+/* -------------------------------- 
+
+Title: Radio Switch v2
+Descr: A custom radio button with a switch element and two labels
+
+-------------------------------- */
+
+:root {
+  // style
+  --radio-switch-v2-width: 52px;
+  --radio-switch-v2-height: 30px;
+  --radio-switch-v2-padding: 4px;
+  --radio-switch-v2-radius: 50em;
+
+  // animation
+  --radio-switch-v2-animation-duration: 0.3s;
+}
+
+.radio-switch-v2 {
+  position: relative;
+  display: inline-block; // flexbox fallback
+  display: inline-flex;
+}
+
+.radio-switch-v2__item {
+  position: relative;
+  height: var(--radio-switch-v2-height);
+  float: left; // flexbox fallback
+}
+
+.radio-switch-v2__input {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  width: calc(var(--radio-switch-v2-width)*0.5);
+  opacity: 0;
+  cursor: pointer;
+  transform: scaleX(2); // scale up the input element so that it covers the entire switch
+  transform-origin: 0 0; 
+
+  .radio-switch-v2__item:last-of-type & {
+    transform-origin: 100% 100%;
+  }
+
+  .radio-switch-v2__item:first-of-type & {
+    order: 1; // input follows label
+  }
+
+  &:checked {
+    z-index: -1; // make sure the unchecked input is the only one clickable 
+  }
+}
+
+.radio-switch-v2__label {
+  position: relative;
+  z-index: 2;
+  display: block;
+  line-height: var(--radio-switch-v2-height);
+  font-size: calc(var(--text-sm)*1.2);
+  transition: color var(--radio-switch-v2-animation-duration);
+
+  .radio-switch-v2__item:first-of-type & {
+    float: left; // flexbox fallback
+    margin-right: var(--space-xs);
+  }
+
+  .radio-switch-v2__item:last-of-type & {
+    float: right; // flexbox fallback
+    margin-left: var(--space-xs);
+  }
+
+  .radio-switch-v2__input:checked ~ & {
+    color: var(--color-primary);
+  }
+
+  .radio-switch-v2__input:focus ~ & { // focus effect if :focus-within is not supported
+    outline: 2px solid alpha(var(--color-primary), 0.2);
+    outline-offset: 2px;
+  }
+  
+  :not(*):focus-within,
+  .radio-switch-v2__input:focus ~ & { // reset focus style for browsers supporting :focus-within
+    outline: none;
+  }
+}
+
+.radio-switch-v2__toggle {
+  position: absolute;
+  z-index: 1;
+  width: var(--radio-switch-v2-width);
+  height: var(--radio-switch-v2-height); 
+  top: 0;
+  left: 0;
+  transform: translateX(-50%);
+  border-radius: var(--radio-switch-v2-radius);
+  box-shadow: 0 0 0 1px var(--color-contrast-low);
+
+  .radio-switch-v2:focus-within &,
+  .radio-switch-v2:active & {
+    box-shadow: 0 0 0 1px var(--color-contrast-low), 0 0 0 3px var(--color-contrast-lower); // focus effect if :focus-within is supported
+  }
+}
+
+.radio-switch-v2__marker {
+  position: absolute;
+  z-index: 1;
+  top: var(--radio-switch-v2-padding);
+  left: var(--radio-switch-v2-padding);
+  width: calc(var(--radio-switch-v2-height) - var(--radio-switch-v2-padding) * 2);
+  height: calc(var(--radio-switch-v2-height) - var(--radio-switch-v2-padding) * 2);
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  transition: left var(--radio-switch-v2-animation-duration);
+  will-change: left;
+}
+
+.radio-switch-v2__input:checked ~ .radio-switch-v2__toggle .radio-switch-v2__marker {
+  left: calc(var(--radio-switch-v2-width) - var(--radio-switch-v2-height) + var(--radio-switch-v2-padding));
+}

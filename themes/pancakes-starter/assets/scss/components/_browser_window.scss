@@ -1,0 +1,32 @@
+.browser-window {
+  background: #ececec;
+  position: relative;
+  display: inline-block;
+  padding: 20px 0 0;
+  -webkit-box-shadow: 0 16px 80px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 16px 80px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid #ececec;
+  border-radius: 5px;
+  &:before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 35px;
+    height: 7px;
+    top: 6px;
+    left: 10px;
+    background-image: url(https://www.solodev.com/_/images/window-buttons.svg);
+  }
+  img {
+    width: 1000px;
+  }
+}
+.hero {
+  .browser-window {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+  .browser-window video {
+    margin-bottom: -5px;
+  }
+}

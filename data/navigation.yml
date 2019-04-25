@@ -1,0 +1,48 @@
+logo_text: "Pancakes Starter"
+header_layout: "logo-left"
+main:
+  - name: "About"
+    path: "/about/index.md"
+    sub:
+      - name: "Brand"
+      - name: "Web"
+      - name: "Market"
+  - name: "Services"
+    key: "services"
+  - name: "Work"
+  - name: "Contact"
+    url: "/about/#contact"
+    button: true
+footer:
+  - row: 1
+    columns:
+      - title: "Company"
+        menu:
+          - name: "work"
+            title: "Work"
+          - name: "about"
+            title: "About"
+          - name: "services"
+            title: "Services"
+            url: "/#services"
+      - title: "Latest"
+        menu:
+          - name: "news"
+            title: "News"
+            url: "https://news.fullstackdigital.com/"
+          - name: "blog"
+            title: "Blog"
+            url: "https://blog.fullstackdigital.com"
+          - name: "Labs"
+            title: "labs"
+      - title: "Connect"
+        menu:
+          - name: "Dribbble"
+            title: "Dribbble"
+            url: "https://dribbble.com/fullstackdigital"
+          - name: "Twitter"
+            title: "Twitter"
+            url: "https://twitter.com/fullstackdigitl"
+          - name: "Instagram"
+            title: "Instagram"
+            url: "https://www.instagram.com/fullstack_digital/"

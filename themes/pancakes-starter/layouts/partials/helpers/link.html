@@ -1,0 +1,15 @@
+<!--Get a permalink based on a path-->
+<!--if md is in link, getpage-->
+{{ $link := false }}
+
+
+{{ with .link }}
+  {{ $link = . }}
+  {{ if in $link "md" }}
+    {{ $link = $.global.Site.GetPage $link }}
+    {{ $link = $link.Permalink }}
+  {{ end }}
+{{ end }}
+
+
+{{ return $link }}

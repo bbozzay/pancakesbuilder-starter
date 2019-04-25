@@ -1,0 +1,37 @@
+{{ $query := $.Site.RegularPages }}
+{{ with partial "helpers/post_query.html" . }}
+  {{ $query = . }}
+{{ end }}
+
+
+{{ range $query }}
+
+<div class="ajaxItem row margin-bottom--lg">
+<a href="{{ .Permalink }}">
+
+{{ $size := "250x" }}
+{{ $src := "" }}
+{{ with .Params.grid_item.image.src }}
+  {{ $src = . }}
+{{ end }}
+{{ with .Params.grid_item.background_image }}
+  {{ $src = . }}
+{{ end }}
+{{ with .Params.grid_item.image.size }}
+  {{ $size = . }}
+{{ end }}
+
+{{ with partial "helpers/featured_image.html" (dict "page" . "size" $size "src" $src ) }}
+    <img src="{{ .Permalink }}" />
+{{ end }}
+<div>
+<h2>{{ .Params.grid_item.title | safeHTML }}</h2>
+<p>{{ .Params.grid_item.description }}</p>
+</div>
+</a>
+</div>
+{{ end }}
+
+{{ if eq .IsHome false }}
+  {{ template "_internal/pagination.html" . }}
+{{ end }}

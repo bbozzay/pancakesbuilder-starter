@@ -1,0 +1,85 @@
+{{ define "main" }}
+{{ range $i, $e := .Params.blocks }}
+<section id="{{ $i }}"{{ with .classes }} class="{{ . }}"{{ end }}{{ with .theme }} data-theme="{{ . }}"{{ end }}>
+
+{{ with .rows }}
+{{ range . }}
+<div class="{{ with .classes }}{{ . }}{{ else }}text-component container container--md padding-bottom--xl padding-top--xl{{ end }}{{ with .layout }} {{ . }}{{ end }}">
+{{ if eq .layout "center-title" }}
+
+    {{ with .title }}
+        {{ if eq $i 0 }}
+        <h1 class="text--center">{{ . }}</h1>
+        {{ else }}
+        <h1 class="text--center">{{ . }}</h1>
+        {{ end }}
+    {{ end }}
+
+    {{ with .paragraph }}
+    <p class="text--center text--md">{{ . }}</p>
+    {{ end }}
+
+    {{ with .button }}
+    <div class="text--center">
+        {{ $text := .text }}
+        {{ $classes := .classes }}
+        {{ with partial "helpers/link.html" (dict "page" . "global" $ "link" .link) }}
+        <a class="btn{{ with $classes }} {{ . }}{{ end }}" href="{{ . }}">{{ $text }}</a>
+        {{ end }}
+    </div>
+    {{ end }}
+
+{{ end }}
+{{ if eq .layout "logos" }}
+    {{ partial "components/logos.html" (dict "global" $ "page" . ) }}
+{{ end }}
+{{ if eq .layout "center-media" }}
+    {{ with .title }}
+    <h2 class="text--center text--xxl">{{ . }}</h2>
+    {{ end }}
+
+    {{ with .paragraph }}
+    <p class="text--center text--md">{{ . }}</p>
+    {{ end }}
+<div class="text--center">
+<div class="browser-window">
+{{ with .video }}
+<video autoplay="" muted="" preload="metadata" loop="loop" playsinline="playsinline" poster="" class="video-autoplay"><source src="{{ . }}" type="video/mp4"></video>
+{{ end }}
+</div>
+</div>
+{{ end }}
+
+
+{{ if eq .layout "left-media" }}
+<div class="col-6">
+    {{ with .title }}
+        <h2 class="text--left text--xxl">{{ . }}</h2>
+    {{ end }}
+
+    {{ with .paragraph }}
+    <p class="text--left text--md">{{ . }}</p>
+    {{ end }}
+
+</div>
+
+<div class="browser-window">
+{{ with .video }}
+<video autoplay="" muted="" preload="metadata" loop="loop" playsinline="playsinline" poster="" class="video-autoplay"><source src="{{ . }}" type="video/mp4"></video>
+{{ end }}
+</div>
+{{ end }}
+
+
+</div>
+{{ end }}
+{{ end }}
+</section>
+{{ end }}
+
+<article class="container container--sm">
+    
+    {{ partial "components/row-items.html" . }}
+</article>
+
+{{ end }}

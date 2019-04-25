@@ -1,0 +1,25 @@
+/* -------------------------------- 
+
+Title: Customer Logos
+Descr: A gallery of trusted companies
+
+-------------------------------- */
+
+.customer-logos {}
+
+.customer-logos__list {
+  margin-top: var(--space-lg);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  > * {
+    margin: 0 var(--space-md) var(--space-sm);
+  }
+}
+
+.customer-logos__logo {
+  display: block;
+  fill: var(--color-contrast-medium);
+}

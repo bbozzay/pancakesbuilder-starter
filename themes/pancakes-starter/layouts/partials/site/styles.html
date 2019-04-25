@@ -1,0 +1,5 @@
+{{ $s := resources.Get "scss/style.scss" | toCSS | postCSS | minify }}
+
+<link rel="stylesheet" href="{{ $s.Permalink }}" />
+
+<script>document.getElementsByTagName("html")[0].className += " js";</script>

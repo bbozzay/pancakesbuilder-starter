@@ -1,0 +1,12 @@
+<ul class="customer-logos__list">
+    {{ range .page.src }}
+    {{ $img := resources.Get .image }}
+    {{ $width := "100" }}
+    {{ with .width }}
+      {{ $width = . }}
+    {{ end }}
+      <li>
+          <img{{ with $width }} width="{{ . }}"{{ end }} src="{{ $img.Permalink }}" />
+      </li>
+    {{ end }}
+</ul>

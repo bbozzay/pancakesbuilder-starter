@@ -1,0 +1,89 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+{{- $title := .Site.Title -}}
+{{- if .Title -}}
+  {{- $title = print .Title " | " .Site.Title -}}
+{{- end -}}
+{{- $meta := "" -}}
+{{- $meta_title := $title -}}
+{{- $meta_description := .Description -}}
+{{- $meta_image := "" -}}
+
+{{ with .Site.Params.og_image }}
+  {{ $imgsrc := resources.Get . }}
+  {{ $imgsized := ($imgsrc.Resize "500x q100") }}
+  {{ $meta_image = $imgsized.Permalink }}
+{{ end }}
+{{- with .Params.image -}}
+  {{- $meta_image = . -}}
+{{- end -}}
+
+{{- with .Params.meta -}}
+  {{- $meta = . -}}
+  {{- with .title -}}
+    {{- $meta_title = . -}}
+  {{- end -}}
+  {{- with .description -}}
+    {{- $meta_description = . -}}
+  {{- end -}}
+  {{- with .og_image -}}
+    {{- $meta_image = . -}}
+  {{- end -}}
+  {{- with .image -}}
+    {{- $meta_image = . -}}
+  {{- end -}}
+{{- end -}}
+{{ if in $meta_image "images" }}
+  {{ $imgsrc := strings.TrimPrefix "/" $meta_image }}
+    {{ with .Resources.Match $imgsrc }}
+    {{ range . }}
+      {{ $imgsrc = . }}
+      {{ $imgsized := ($imgsrc.Resize "500x q100") }}
+      {{ $meta_image = $imgsized.Permalink }}
+    {{ end }}
+    {{ end }}
+{{ end }}
+<!-- Primary Meta Tags -->
+<title>{{ $title }}</title>
+<meta name="title" content='{{ $title | safeHTML }}'>
+{{ with $meta_description }}<meta name="description" content="{{ . | safeHTML }}">{{ end }}
+
+{{- $favcon := "" -}}
+{{- if .Site.Params.favcon }}
+  {{ $favcon = .Site.Params.favcon }}
+  {{- $favconsrc := resources.Get $favcon -}}
+  {{- $favxs := ($favconsrc.Resize "32x q100").Permalink -}}
+  
+  {{ if $favxs }}
+<link rel="icon" href="{{ $favxs }}" sizes="32x32">
+  {{ end }}
+
+  {{- $favs := ($favconsrc.Resize "180x q100").Permalink -}}
+
+  {{ if $favs }}
+<link rel="apple-touch-icon-precomposed" href="{{ $favs }}" sizes="180x180">
+  {{ end }}
+  {{- $favm := ($favconsrc.Resize "192x q100").Permalink -}}
+  {{ if $favm }}
+<link rel="icon" href="{{ $favm }}" sizes="192x192">
+  {{ end }}
+  {{- $favl := ($favconsrc.Resize "270x q100").Permalink -}}
+  {{ if $favl }}
+<meta name="msapplication-TileImage" content="{{ $favl }}">
+  {{ end }}
+{{- end -}}
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:title" content="{{ $title | safeHTML }}">
+<meta property="og:description" content="{{ $meta_description | safeHTML }}">
+<meta property="og:image" content="{{ $meta_image }}">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="{{ $meta_image }}">
+<meta property="twitter:url" content="{{ .Permalink }}">
+<meta property="twitter:title" content="{{ $meta_title | safeHTML }}">
+<meta property="twitter:description" content="{{ $meta_description | safeHTML }}">
+<meta property="twitter:image" content="{{ $meta_image }}">
