@@ -14,7 +14,8 @@ ignoreFiles = [ "docs.*" ]
 
 [params]
 disallow_search_engines = false # set robots.txt to disallow everything
-debug_enabled = false #disable drag and drop editor
+debug_enabled = true #disable drag and drop editor
+test_mode = true
 # add redirects/headers
 [outputs]
 home = ["HTML", "RSS", "REDIRECTS", "HEADERS"]

@@ -2,21 +2,36 @@
 title: "about"
 layout: "pancakes"
 stacks:
-- template: section
-  id: "id"
-  classes: "h_c-space-between v_c-center"
-  rows:
-  - template: row
-    id: "rowId"
-    classes: "h_c-center v_c-top"
-    columns:
-    - template: column
-      id: "colID"
-      classes: "col2 h_c-center"
-      elements:
-      - template: button
-        title: "button name"
-        
+  - template: "section"
+    id: "testID"
+    class: "padding-top--xl padding-bottom--xl"
+    rows:
+    - template: "row"
+      id:
+      class: "flex container container--md padding-top--md padding-bottom--md"
+      columns:
+      - template: "column"
+        id: "custom-id"
+        class: "col-6"
+        elements:
+        - template: "text"
+          html: | 
+            <p>Text</p>
+  - template: "section-2"
+    id: "testID"
+    class: "flex"
+    rows:
+    - template: "row"
+      id:
+      class: "container container--md"
+      columns:
+      - template: "column"
+        id: "custom-id"
+        class: "col-6"
+        elements:
+        - template: "text"
+          html: | 
+            <p>Text 2</p>     
 ---
 ## Markdown Header 2
 Markdown Paragraph
