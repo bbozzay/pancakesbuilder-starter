@@ -5,7 +5,7 @@ theme = ["pancakesBuilder-dev", "pancakes-starter", "pancakesDashboard-dev"]
 
 enableRobotsTXT = true
 disableAliases = true # overrides Hugo aliases with netlify aliases. Set false if not using netlify.
-ignoreFiles = [ "docs.*" ]
+ignoreFiles = [ "docs.*"]
 
 [permalinks]
   pages = "/:section/:title/"

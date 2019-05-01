@@ -3,3 +3,11 @@
 
 {{ $scripts := slice $s $n | resources.Concat "app.js" | minify }}
 <script src="{{ $scripts.Permalink }}"></script>
+
+<!--adding for testing for now-->
+{{ $env := .Scratch.Get "env" }}
+{{ if eq $env "staging" }}
+
+{{/* <!-- Builder JS --> */}}
+{{ partial "pancakesBuilder/app/scripts.html" . | safeHTML }}
+{{ end }}
