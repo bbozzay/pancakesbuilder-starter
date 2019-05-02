@@ -23,7 +23,7 @@ stacks:
     rows:
     - template: "row"
       id:
-      class: "container container--md"
+      class: "flex container container--md padding-top--md padding-bottom--md"
       columns:
       - template: "column"
         id: "custom-id"
