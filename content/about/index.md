@@ -31,10 +31,5 @@ stacks:
         elements:
         - template: "text"
           html: | 
-            <p>Text 2</p>     
+            <p>Text 2</p> 
 ---
-## Markdown Header 2
-Markdown Paragraph
-
-* Markdown List Item 1
-* MD List Item 2
