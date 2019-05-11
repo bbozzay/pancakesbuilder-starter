@@ -4,11 +4,11 @@ layout: "pancakes"
 stacks:
   - template: "section"
     id: "testID"
-    class: "padding-top--xl padding-bottom--xl"
+    class: "flex padding-bottom--xxl padding-top--xxls"
     rows:
     - template: "row"
       id:
-      class: "flex container container--md padding-top--md padding-bottom--md"
+      class: "flex container container--md padding-bottom--xxl"
       columns:
       - template: "column"
         id: "custom-id"
@@ -19,11 +19,11 @@ stacks:
             <p>Text</p>
   - template: "section-2"
     id: "testID"
-    class: "flex"
+    class: "flex padding-top--xxl padding-bottom--xl"
     rows:
     - template: "row"
       id:
-      class: "flex container container--md padding-top--md padding-bottom--md"
+      class: "flex container container--md padding-bottom--xxl"
       columns:
       - template: "column"
         id: "custom-id"
