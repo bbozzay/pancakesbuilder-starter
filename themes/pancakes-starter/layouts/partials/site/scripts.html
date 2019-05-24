@@ -8,6 +8,5 @@
 {{ $env := .Scratch.Get "env" }}
 {{ if eq $env "staging" }}
 
-{{/* <!-- Builder JS --> */}}
-{{ partial "pancakesBuilder/app/scripts.html" . | safeHTML }}
+
 {{ end }}
